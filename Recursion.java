@@ -21,4 +21,16 @@ public class Recursion {
         return countInRest;
     }
 
+    /**
+     * Recursively counts occurrences of the lowercase substring "hi" in str.
+     */
+    public static int countHi(String str) {
+        if (str.length() < 2) return 0;
+
+        if (str.startsWith("hi")) {
+            return 1 + countHi(str.substring(2));
+        }
+        return countHi(str.substring(1));
+    }
+
 }
