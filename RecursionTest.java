@@ -65,4 +65,122 @@ public class RecursionTest {
         assertEquals(0, Recursion.count8(5));
     }
 
+    // countHi tests
+
+    @Test
+    public void testCountHi_specExample_xxhixx() {
+        assertEquals(1, Recursion.countHi("xxhixx"));
+    }
+
+    @Test
+    public void testCountHi_specExample_xhixhix() {
+        assertEquals(2, Recursion.countHi("xhixhix"));
+    }
+
+    @Test
+    public void testCountHi_specExample_hi() {
+        assertEquals(1, Recursion.countHi("hi"));
+    }
+
+    @Test
+    public void testCountHi_emptyString() {
+        assertEquals(0, Recursion.countHi(""));
+    }
+
+    @Test
+    public void testCountHi_singleChar() {
+        assertEquals(0, Recursion.countHi("h"));
+    }
+
+    @Test
+    public void testCountHi_noHi() {
+        assertEquals(0, Recursion.countHi("abcdefg"));
+    }
+
+    @Test
+    public void testCountHi_consecutiveHi() {
+        assertEquals(3, Recursion.countHi("hihihi"));
+    }
+
+    @Test
+    public void testCountHi_uppercaseIgnored() {
+        // Problem spec says lowercase "hi" only.
+        assertEquals(0, Recursion.countHi("HI HI HI"));
+    }
+
+    @Test
+    public void testCountHi_hiWithFillerBetween() {
+        assertEquals(2, Recursion.countHi("hiabchi"));
+    }
+
+    @Test
+    public void testCountHi_embeddedHi() {
+        // "hhhiii" contains exactly one "hi".
+        assertEquals(1, Recursion.countHi("hhhiii"));
+    }
+
+    @Test
+    public void testCountHi_mixedPattern() {
+        assertEquals(2, Recursion.countHi("ahixhi"));
+    }
+
+    // countHi2 tests
+
+    @Test
+    public void testCountHi2_specExample_ahixhi() {
+        assertEquals(1, Recursion.countHi2("ahixhi"));
+    }
+
+    @Test
+    public void testCountHi2_specExample_ahibhi() {
+        assertEquals(2, Recursion.countHi2("ahibhi"));
+    }
+
+    @Test
+    public void testCountHi2_specExample_xhixhi() {
+        assertEquals(0, Recursion.countHi2("xhixhi"));
+    }
+
+    @Test
+    public void testCountHi2_emptyString() {
+        assertEquals(0, Recursion.countHi2(""));
+    }
+
+    @Test
+    public void testCountHi2_plainHi() {
+        assertEquals(1, Recursion.countHi2("hi"));
+    }
+
+    @Test
+    public void testCountHi2_xhiOnly() {
+        assertEquals(0, Recursion.countHi2("xhi"));
+    }
+
+    @Test
+    public void testCountHi2_twoHiNoX() {
+        assertEquals(2, Recursion.countHi2("hihi"));
+    }
+
+    @Test
+    public void testCountHi2_xhiThenHiHi() {
+        // "xhihihi": skip leading "xhi", then "hihi" -> 2
+        assertEquals(2, Recursion.countHi2("xhihihi"));
+    }
+
+    @Test
+    public void testCountHi2_hiWithNonXBefore() {
+        assertEquals(2, Recursion.countHi2("hixhhi"));
+    }
+
+    @Test
+    public void testCountHi2_noHi() {
+        assertEquals(0, Recursion.countHi2("abcdefg"));
+    }
+
+    @Test
+    public void testCountHi2_alternatingPatterns() {
+        // "hihixhi": hi (1), hi (1), xhi (skipped) -> 2
+        assertEquals(2, Recursion.countHi2("hihixhi"));
+    }
+
 }
