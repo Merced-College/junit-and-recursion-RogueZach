@@ -33,4 +33,21 @@ public class Recursion {
         return countHi(str.substring(1));
     }
 
+    /**
+     * Recursively counts occurrences of "hi" in str, but does NOT count any
+     * "hi" that has an 'x' immediately before it.
+     */
+    public static int countHi2(String str) {
+        if (str.length() < 2) return 0;
+
+        // If the next three chars are "xhi", skip all three so we don't count that "hi".
+        if (str.length() >= 3 && str.substring(0, 3).equals("xhi")) {
+            return countHi2(str.substring(3));
+        }
+        if (str.startsWith("hi")) {
+            return 1 + countHi2(str.substring(2));
+        }
+        return countHi2(str.substring(1));
+    }
+
 }
