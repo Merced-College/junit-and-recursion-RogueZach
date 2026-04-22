@@ -183,4 +183,129 @@ public class RecursionTest {
         assertEquals(2, Recursion.countHi2("hihixhi"));
     }
 
+    // strCount tests
+
+    @Test
+    public void testStrCount_specExample_cat() {
+        assertEquals(2, Recursion.strCount("catcowcat", "cat"));
+    }
+
+    @Test
+    public void testStrCount_specExample_cow() {
+        assertEquals(1, Recursion.strCount("catcowcat", "cow"));
+    }
+
+    @Test
+    public void testStrCount_specExample_dog() {
+        assertEquals(0, Recursion.strCount("catcowcat", "dog"));
+    }
+
+    @Test
+    public void testStrCount_emptyString() {
+        assertEquals(0, Recursion.strCount("", "cat"));
+    }
+
+    @Test
+    public void testStrCount_exactMatch() {
+        assertEquals(1, Recursion.strCount("cat", "cat"));
+    }
+
+    @Test
+    public void testStrCount_backToBackMatches() {
+        assertEquals(2, Recursion.strCount("catcat", "cat"));
+    }
+
+    @Test
+    public void testStrCount_nonOverlappingRule() {
+        // "ccccc" with sub "cc" -> cc|cc|c, so 2 (NOT 4 with overlap).
+        assertEquals(2, Recursion.strCount("ccccc", "cc"));
+    }
+
+    @Test
+    public void testStrCount_repeatedPattern() {
+        assertEquals(3, Recursion.strCount("ababab", "ab"));
+    }
+
+    @Test
+    public void testStrCount_doubleChar() {
+        assertEquals(2, Recursion.strCount("aaaa", "aa"));
+    }
+
+    @Test
+    public void testStrCount_longerSub() {
+        assertEquals(2, Recursion.strCount("hellohello", "hello"));
+    }
+
+    @Test
+    public void testStrCount_singleCharSub() {
+        assertEquals(4, Recursion.strCount("xaxaxax", "x"));
+    }
+
+    @Test
+    public void testStrCount_subLongerThanStr() {
+        assertEquals(0, Recursion.strCount("hi", "hello"));
+    }
+
+    // stringClean tests
+
+    @Test
+    public void testStringClean_specExample_yyzzza() {
+        assertEquals("yza", Recursion.stringClean("yyzzza"));
+    }
+
+    @Test
+    public void testStringClean_specExample_abbbcdd() {
+        assertEquals("abcd", Recursion.stringClean("abbbcdd"));
+    }
+
+    @Test
+    public void testStringClean_specExample_Hello() {
+        assertEquals("Helo", Recursion.stringClean("Hello"));
+    }
+
+    @Test
+    public void testStringClean_emptyString() {
+        assertEquals("", Recursion.stringClean(""));
+    }
+
+    @Test
+    public void testStringClean_singleChar() {
+        assertEquals("a", Recursion.stringClean("a"));
+    }
+
+    @Test
+    public void testStringClean_twoSameChars() {
+        assertEquals("a", Recursion.stringClean("aa"));
+    }
+
+    @Test
+    public void testStringClean_noDuplicates() {
+        assertEquals("abc", Recursion.stringClean("abc"));
+    }
+
+    @Test
+    public void testStringClean_allSameChars() {
+        assertEquals("a", Recursion.stringClean("aaaa"));
+    }
+
+    @Test
+    public void testStringClean_pairs() {
+        assertEquals("abc", Recursion.stringClean("aabbcc"));
+    }
+
+    @Test
+    public void testStringClean_longerPairs() {
+        assertEquals("abcd", Recursion.stringClean("aabbccdd"));
+    }
+
+    @Test
+    public void testStringClean_alternatingNoDupes() {
+        assertEquals("ababab", Recursion.stringClean("ababab"));
+    }
+
+    @Test
+    public void testStringClean_uppercase() {
+        assertEquals("XYZ", Recursion.stringClean("XXYYZZ"));
+    }
+
 }
